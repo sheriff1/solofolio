@@ -1,22 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.vue';
-import FeaturedProjects from '../components/FeaturedProjects.vue';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.vue";
+import FeaturedProjects from "../components/FeaturedProjects.vue";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("portfolio");
+const featuredProjects = allProjects.filter(
+  (project) => project.data.featured === true
+);
+
+const allBlogPosts = await getCollection("blog");
+const recentBlogPosts = allBlogPosts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
 <Layout title="Home - Portfolio">
   <Hero client:load />
-  <FeaturedProjects client:load />
-  
+  <FeaturedProjects client:load projects={featuredProjects} />
+
   <!-- About Section -->
   <section class="py-16 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+        <h2
+          class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+        >
           About Me
         </h2>
-        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400">
-          I'm a passionate developer who loves creating beautiful and functional web applications.
+        <p
+          class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
+        >
+          I'm a passionate developer who loves creating beautiful and functional
+          web applications.
         </p>
       </div>
       <div class="mt-12">
@@ -24,25 +40,49 @@ import FeaturedProjects from '../components/FeaturedProjects.vue';
           <div class="text-center">
             <div class="flex justify-center">
               <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3">
-                <svg class="h-8 w-8 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                <svg
+                  class="h-8 w-8 text-blue-600 dark:text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">Development</h3>
+            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
+              Development
+            </h3>
             <p class="mt-2 text-base text-gray-500 dark:text-gray-400">
-              Full-stack development with modern technologies and best practices.
+              Full-stack development with modern technologies and best
+              practices.
             </p>
           </div>
           <div class="text-center">
             <div class="flex justify-center">
               <div class="bg-green-100 dark:bg-green-900 rounded-full p-3">
-                <svg class="h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                <svg
+                  class="h-8 w-8 text-green-600 dark:text-green-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
+                  ></path>
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">Design</h3>
+            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
+              Design
+            </h3>
             <p class="mt-2 text-base text-gray-500 dark:text-gray-400">
               User-centered design with a focus on accessibility and usability.
             </p>
@@ -50,14 +90,26 @@ import FeaturedProjects from '../components/FeaturedProjects.vue';
           <div class="text-center">
             <div class="flex justify-center">
               <div class="bg-purple-100 dark:bg-purple-900 rounded-full p-3">
-                <svg class="h-8 w-8 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg
+                  class="h-8 w-8 text-purple-600 dark:text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">Performance</h3>
+            <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
+              Performance
+            </h3>
             <p class="mt-2 text-base text-gray-500 dark:text-gray-400">
-              Optimized applications that load fast and provide great user experience.
+              Optimized applications that load fast and provide great user
+              experience.
             </p>
           </div>
         </div>
@@ -69,34 +121,56 @@ import FeaturedProjects from '../components/FeaturedProjects.vue';
   <section class="py-16 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+        <h2
+          class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+        >
           Recent Blog Posts
         </h2>
-        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400">
+        <p
+          class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
+        >
           Latest thoughts and insights from my development journey.
         </p>
       </div>
       <div class="mt-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Blog post cards will be populated here -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                Sample Blog Post
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                This is a sample blog post description. Replace with actual content.
-              </p>
-              <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                <span>Jan 15, 2025</span>
-                <span class="mx-2">·</span>
-                <span>5 min read</span>
+          {
+            recentBlogPosts.map((post) => (
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    {post.data.description}
+                  </p>
+                  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {post.data.pubDate.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                    <span class="mx-2">·</span>
+                    <span>5 min read</span>
+                  </div>
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
+                  >
+                    Read more →
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
+            ))
+          }
         </div>
         <div class="mt-8 text-center">
-          <a href="/blog" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+          <a
+            href={`/blog`}
+            class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+          >
             View All Posts
           </a>
         </div>

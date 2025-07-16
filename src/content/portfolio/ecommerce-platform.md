@@ -1,7 +1,7 @@
 ---
 title: "E-commerce Platform"
 description: "A full-stack e-commerce solution with modern UI, payment integration, and robust backend architecture."
-heroImage: "/portfolio/ecommerce-hero.jpg"
+heroImage: "/images/portfolio/ecommerce-hero.jpg"
 technologies:
   ["Vue.js", "Node.js", "MongoDB", "Tailwind CSS", "Stripe", "Docker"]
 liveUrl: "https://example-ecommerce.com"

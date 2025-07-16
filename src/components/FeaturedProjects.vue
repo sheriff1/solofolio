@@ -26,6 +26,7 @@
               :src="project.data.heroImage"
               :alt="project.data.title"
               class="w-full h-full object-cover"
+              @error="handleImageError"
             />
             <div
               v-else
@@ -122,6 +123,11 @@ interface Props {
 }
 
 const { projects = [] } = defineProps<Props>();
+
+const handleImageError = (event: Event) => {
+  const target = event.target as HTMLImageElement;
+  target.style.display = "none";
+};
 </script>
 
 <style scoped>

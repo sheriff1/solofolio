@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// No need for baseUrl anymore since we're using absolute paths
+</script>
+
 <template>
   <section
     class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20"
@@ -29,10 +33,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-// Component logic can be added here
-</script>
 
 <style scoped>
 /* Component-specific styles */
