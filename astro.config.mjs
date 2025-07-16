@@ -9,7 +9,8 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://v2.sheriffjolaoso.com", // Your custom domain
+  site: "https://solofolio.vercel.app", // Will update after Vercel deployment
+  output: "static",
   integrations: [vue(), mdx()],
 
   vite: {
