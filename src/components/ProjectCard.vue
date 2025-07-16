@@ -48,7 +48,7 @@
         </span>
       </div>
 
-      <div class="flex gap-4">
+      <div class="flex gap-2">
         <a
           :href="`/portfolio/${project.slug}`"
           class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 font-medium"
