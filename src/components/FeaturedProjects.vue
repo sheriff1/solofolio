@@ -2,17 +2,21 @@
   <section class="py-16 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+        <h2
+          class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+        >
           Featured Projects
         </h2>
-        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400">
+        <p
+          class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
+        >
           Some of my best work showcasing different technologies and approaches.
         </p>
       </div>
-      
+
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div 
-          v-for="project in projects" 
+        <div
+          v-for="project in projects"
           :key="project.slug"
           class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
         >
